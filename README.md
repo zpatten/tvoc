@@ -1,4 +1,4 @@
-Simple Python Daemon for sending TVOC sensors readings for a 3D printer to MQTT (Home Assistant in my case).
+Simple Python Daemon for sending TVOC sensor readings for a 3D printer to MQTT (Home Assistant in my case).
 
 BOM:
 - Adafruit SGP30 (https://www.adafruit.com/product/3709)
