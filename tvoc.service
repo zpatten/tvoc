@@ -1,0 +1,14 @@
+[Unit]
+Description=TVOC Sensor Monitor
+
+[Service]
+WorkingDirectory=/opt/tvoc
+EnvironmentFile=/opt/tvoc/tvoc.env
+ExecStart=/opt/tvoc/.venv/bin/python3 -u /opt/tvoc/tvoc.py
+Restart=always
+RestartSec=1s
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
