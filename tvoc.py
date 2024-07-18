@@ -5,11 +5,14 @@ import board
 import os
 import sys
 import time
+import json
+
 import adafruit_sgp30
 import adafruit_sht4x
 
-import json
 import paho.mqtt.client as mqtt
+
+from humanize.time import precisedelta
 
 STARTED_AT = time.time()
 
@@ -93,8 +96,9 @@ while True:
       if sgp30_init:
         sys.exit(0)
     else:
-      remaining_calibration_seconds = (CALIBRATION_INTERVAL - (time.time() - started_at))
-      print(f"SGP30 not calibrated; {remaining_calibration_seconds} seconds remaining until calibration complete")
+      remaining_calibration_seconds = int(CALIBRATION_INTERVAL - (time.time() - started_at))
+      humanized_remaining_calibration_time = precisedelta(remaining_calibration_seconds, minimum_unit='seconds')
+      print(f"SGP30 not calibrated; {humanized_remaining_calibration_time} remaining until calibration complete")
 
     print(f">>> Baseline Values: TVOC = 0x{baseline_TVOC:x} ({baseline_TVOC}), eCO2 = 0x{baseline_eCO2:x} ({baseline_eCO2})")
 
