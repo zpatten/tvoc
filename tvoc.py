@@ -74,7 +74,7 @@ while True:
   baseline_TVOC = sgp30.baseline_TVOC
   baseline_eCO2 = sgp30.baseline_eCO2
 
-  if time.time() - mqtt_at >= MQTT_INTERVAL:
+  if time.time() >= mqtt_at:
     print(f"TVOC: {TVOC} ppb | eCO2: {eCO2} ppm | T: {temp_c:0.2f} C ({temp_f:0.2f} F) | H: {relative_humidity:0.2f} % | Baseline TVOC:{baseline_TVOC} | Baseline eCO2:{baseline_eCO2}")
 
     mqtt_at = next_interval(MQTT_INTERVAL)
